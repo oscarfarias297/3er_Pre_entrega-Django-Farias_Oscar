@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortalMedic - Listado de Medicos</title>
+</head>
+<body>
+
+    <button><a href="{% url 'core:index' %}">Volver a HOME</a></button>
+
+    <h1>Listado de Médicos disponibles</h1>
+    {% for medico in medicos %}
+    <ul>
+        <li><h3>{{ medico }}</h3></li>
+        <p>Apelldido: {{ medico.apellido }}</p>
+        {% if medico.nacionalidad %}
+            <p>País de origen: {{ medico.nacionalidad }}</p>
+        {% else %}
+            <p>País de origen: "No hay registro"</p>
+        {% endif %}
+    </ul>
+{% endfor %}
+</body>
+</html>

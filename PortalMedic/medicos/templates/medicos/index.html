@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PortalMedic - Medicos</title>
-</head>
-<body>
-    <h1>PortalMedic - Menú Médicos</h1>
+{% extends 'core/base.html' %}
 
-    {% for medico in Medicos  %}
-        <p>medico</p>
-    {% endfor %}
-</body>
-</html>
+{% block title %}
+    PortalMedic®
+{% endblock title %}
+
+
+{% block content %}
+<h1>PortalMedic - Menú Médicos</h1>
+<button><a href="{% url 'core:index' %}">Volver a HOME</a></button>
+<button><a href="{% url 'medicos:medicos_list' %}">Listado de Medicos</a></button>
+
+{% endblock content %}
+
