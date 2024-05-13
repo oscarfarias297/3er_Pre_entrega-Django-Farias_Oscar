@@ -1,6 +1,6 @@
 from django.urls import path,include
 
-from medicos.views import index
+from pacientes.views import index
 
 app_name = "pacientes"
 
