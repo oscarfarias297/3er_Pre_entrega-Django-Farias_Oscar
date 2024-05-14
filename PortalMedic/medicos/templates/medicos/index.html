@@ -1,14 +1,24 @@
 {% extends 'core/base.html' %}
 
 {% block title %}
-    PortalMedic®
+Portal Médico
 {% endblock title %}
 
-
 {% block content %}
-<h1>PortalMedic - Menú Médicos</h1>
-<button><a href="{% url 'core:index' %}">Volver a HOME</a></button>
-<button><a href="{% url 'medicos:medicos_list' %}">Listado de Medicos</a></button>
+
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center mt-5 mb-4">PortalMedic - Menú Médicos</h1>
+            <p class="lead">Nuestros médicos son el corazón de nuestra clínica. Cada uno de ellos está altamente capacitado en su especialidad y se compromete a proporcionar un enfoque integral y compasivo para el tratamiento de sus pacientes. Desde la atención primaria hasta la cirugía especializada, nuestros médicos están aquí para guiarlo a lo largo de su viaje hacia la salud y el bienestar.</p>
+            <div class="text-center">
+                <a href="{% url 'medicos:medicos_list' %}" class="btn btn-secondary">Cartilla de Prestadores</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
 

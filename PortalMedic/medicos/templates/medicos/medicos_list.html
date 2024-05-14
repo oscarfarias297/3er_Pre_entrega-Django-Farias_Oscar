@@ -1,25 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PortalMedic - Listado de Medicos</title>
-</head>
-<body>
+{% extends 'core/base.html' %}
 
-    <button><a href="{% url 'core:index' %}">Volver a HOME</a></button>
+{% block title %}
+PortalMedic > Listado
+{% endblock title %}
 
-    <h1>Listado de Médicos disponibles</h1>
+{% block content %}
+<div class="container">
+
+    <div class="pb-lg-3">
+        <form action="{% url 'medicos:medicos_list' %}" method="get">
+            <input type="text" name="busqueda" placeholder="Buscar...">
+        </form>
+    </div>
+
+    <h1 class="mt-5 mb-4">Cartilla de prestadores</h1>
     {% for medico in medicos %}
-    <ul>
-        <li><h3>{{ medico }}</h3></li>
-        <p>Apelldido: {{ medico.apellido }}</p>
-        {% if medico.nacionalidad %}
-            <p>País de origen: {{ medico.nacionalidad }}</p>
-        {% else %}
-            <p>País de origen: "No hay registro"</p>
-        {% endif %}
-    </ul>
-{% endfor %}
-</body>
-</html>
+    <div class="card mb-3">
+        <div class="card-body">
+            <h3 class="card-title">{{medico.apellido}}, {{ medico.nombre }}</h3>
+            <p class="card-text">Especialidad: {{ medico.especialidad }}</p>
+            
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit">Borrar de Cartilla</button>
+                <p class="fs-5  fst-italic ">¿Confirma eliminar "{{ object.nombre }}"?</p>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+    <a href="{% url 'core:index' %}" class="btn btn-primary">Volver a HOME</a>
+</div>
+
+
+<form method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <button type="submit">Guardar</button>
+</form>
+<a href="{% url 'medicos:index' %}">Volver al inicio de Producto</a>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+{% endblock content %}
