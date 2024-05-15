@@ -14,7 +14,7 @@ PortalMedic > Listado
 
     <div class="d-flex justify-content-between align-items-center">
         <h1 class="mt-5 mb-4">Cartilla de prestadores</h1>
-        <a href="{% url 'medicos:medicos_create' medico.id %}" class="btn btn-primary">Crear Prestador</a>
+        <a href="{% url 'medicos:medicos_create' %}" class="btn btn-primary">Crear Prestador</a>
     </div>
 
     {% for medico in medicos %}
