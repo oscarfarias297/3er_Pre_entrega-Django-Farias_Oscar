@@ -1,13 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PortalMedic - Pacientes</title>
-</head>
-<body>
-    <h1>PortalMedic - Pacientes</h1>
+{% extends 'core/base.html' %}
 
-    <button><a href="{% url 'core:index' %}">Volver a HOME</a></button>
-</body>
-</html>
+{% block title %}
+    PortalMedic | Pacientes
+{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+            <h1 class="text-center">PortalMedic - Pacientes</h1>
+            <p class="lead">Un paciente en un portal médico puede acceder a una variedad de servicios y recursos. Esto incluye programación de citas en línea para consultas médicas, acceso a historiales médicos digitales para revisar resultados de pruebas y diagnósticos previos, la posibilidad de enviar mensajes seguros a su médico para consultas no urgentes, información sobre medicamentos recetados y su administración, así como recursos educativos sobre condiciones de salud y tratamientos. Además, puede encontrar detalles sobre servicios adicionales ofrecidos por la clínica, como programas de bienestar y prevención, así como opciones de pago y facturación en línea para mayor conveniencia.</p>
+            <div class="text-center">
+                <a href="{% url 'core:index' %}" class="btn btn-primary">Volver a HOME</a>
+                <a href="{% url 'pacientes:pacientes_list' %}" class="btn btn-success">Ingresar a buscar pacientes</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

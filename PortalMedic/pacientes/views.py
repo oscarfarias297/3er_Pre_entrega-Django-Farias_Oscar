@@ -4,7 +4,7 @@ from pacientes.models import Paciente
 
 
 def index(request):
-    return render(request, "pacientes/index.html"),
+    return render(request, "pacientes/index.html")
 
 def pacientes_list(request):
     consulta = Paciente.objects.all()
