@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+{% block title %}
+    PortalMedic - Eliminar
+{% endblock title %}
+
+{% block content %}
+
+    <p class="fs-5  fst-italic ">¿Confirma eliminar "{{ object.nombre }}"?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar</button>
+    </form>
+    <a href="{% url 'medicos:index' %}">Retornar a Pagina Principal</a>
+    
+{% endblock content %}
