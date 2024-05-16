@@ -2,7 +2,7 @@
 
 {% block title %}
     {% if form.instance.pk %}
-    PortalMedic Edición
+    PortalMedic | Edición
     {% else %}
     PortalMedic | Creación
     {% endif %}
@@ -10,12 +10,25 @@
 {% endblock title %}
 
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
-        <button type="submit">Guardar</button>
-    </form>
+<div class="container">
+    <h1 class="form-title">CREAR / EDITAR</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-container">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.as_p }}
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 {% endblock content %}
 

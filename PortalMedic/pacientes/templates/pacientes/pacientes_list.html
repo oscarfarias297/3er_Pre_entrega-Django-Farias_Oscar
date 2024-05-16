@@ -9,13 +9,11 @@ PortalMedic - Lista de Pacientes
         <ul>
             <li><h3>{{ paciente }}</h3></li>
             <p>Apelldido: {{ paciente.apellido }}</p>
-            {% if paciente.nacionalidad %}
-                <p>País de origen: {{ medico.nacionalidad }}</p>
+           {% if paciente.nacionalidad %}
+                <p>País de origen: {{ paciente.nacionalidad }}</p>
             {% else %}
                 <p>País de origen: "No hay registro"</p>
             {% endif %}
         </ul>
     {% endfor %}
 {% endblock content %}
-
-
