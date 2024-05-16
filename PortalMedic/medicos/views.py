@@ -35,7 +35,7 @@ def medicos_modificar(request, medico_id=None):
         return render(request, "medicos/medicos_form.html", {"form": form})
 
 
-def medicos_create(request, pk):
+def medicos_create(request):
     if request.method == "POST":
         form = MedicosForm(request.POST)
         if form.is_valid():
