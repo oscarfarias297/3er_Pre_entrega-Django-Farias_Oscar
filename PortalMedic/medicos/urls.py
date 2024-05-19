@@ -7,8 +7,8 @@ app_name = "medicos"
 urlpatterns = [
     path("", index, name="index"),
     path("medicos/list", medicos_list ,name="medicos_list"),
+    path("medicos/medicos_create/", medicos_create, name="medicos_create"),
     path("medicos/medicos_confirmar_eliminar/<int:pk>", confirmar_eliminar ,name="medicos_confirmar_eliminar"),
     path("medicos/medicos_form/", medicos_modificar, name="medicos_modificar"),
-    path("medicos/medicos_create/", medicos_create, name="medicos_create"),
 
 ]

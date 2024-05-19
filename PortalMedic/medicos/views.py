@@ -43,4 +43,4 @@ def medicos_create(request):
             return redirect("medicos:medicos_list")
     else:  # GET
         form = MedicosForm()
-    return render(request, "medicos/medicos_form.html", {"form": form})
+    return render(request, "medicos/medicos_create.html", {"form": form})
