@@ -47,7 +47,7 @@ def medicos_create(request):
 
 def medicos_update(request,pk):
     consulta = Medicos.objects.get(id=pk)
-    if request.method == "get":
+    if request.method == "POST":
         form = MedicosForm(request.POST, instance=consulta)
         if form.is_valid():
             form.save()

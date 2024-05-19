@@ -16,7 +16,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <form method="post">
+                    <form method="POST">
                         {% csrf_token %}
                         <table class="table table-bordered">
                             {{ form.as_table }}
