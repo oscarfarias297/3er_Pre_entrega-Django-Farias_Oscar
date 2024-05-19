@@ -1,27 +1,30 @@
 {% extends 'core/base.html' %}
 
 {% block title %}
-    {% if form.instance.pk %}
-    PortalMedic | Edición
-    {% else %}
-    PortalMedic | Creación
-    {% endif %}
-    
+    PortalMedic - Crear
 {% endblock title %}
 
 {% block content %}
-<div class="container">
-    <h1 class="form-title">CREAR / EDITAR</h1>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="form-container">
+
+<div class="container mt-5">
+    {% if form.instance.pk %}
+        <h1 class="text-center">Modificar Prestador</h1>
+    {% else %}
+        <h1 class="text-center">Editar Prestador</h1>
+    {% endif %}
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
                     <form method="post">
                         {% csrf_token %}
-                        <div class="form-group">
-                            {{ form.as_p }}
+                        <table class="table table-bordered">
+                            {{ form.as_table }}
+                        </table>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            <a href="{% url 'medicos:medicos_list' %}" type="button" class="btn btn-dark ">Cancelar</button></a>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Guardar</button>
                     </form>
                 </div>
             </div>
@@ -29,6 +32,4 @@
     </div>
 </div>
 
-
 {% endblock content %}
-

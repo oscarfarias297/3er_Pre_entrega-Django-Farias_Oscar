@@ -16,7 +16,7 @@ def confirmar_eliminar(request, pk: int):
     if request.method == "POST":
         consulta.delete()
         return redirect("medicos:medicos_list")
-    return render(request, "medicos/medicos_confirmar_eliminar.html", {"object": consulta})
+    return render(request, "medicos/medicos_confirm_delete.html", {"object": consulta})
 
 
 
@@ -43,4 +43,22 @@ def medicos_create(request):
             return redirect("medicos:medicos_list")
     else:  # GET
         form = MedicosForm()
-    return render(request, "medicos/medicos_create.html", {"form": form})
+    return render(request, "medicos/medicos_form.html", {"form": form})
+
+def medicos_update(request,pk):
+    consulta = Medicos.objects.get(id=pk)
+    if request.method == "get":
+        form = MedicosForm(request.POST, instance=consulta)
+        if form.is_valid():
+            form.save()
+            return redirect("medicos:medicos_list")
+    else:  # GET
+        form = MedicosForm(instance=consulta)
+    return render(request, "medicos/medicos_form.html", {"form": form})
+
+def medicos_delete(request,pk):
+    consulta = Medicos.objects.get(id=pk)
+    if request.method == "POST":
+        consulta.delete()
+        return redirect("medicos:medicos_list")
+    return render (request, "medicos/medicos_confirm_delete.html",{"object":consulta})
