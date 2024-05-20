@@ -8,7 +8,8 @@ PortalMedic > Listado
 <div class="container">
     <div class="pb-lg-3">
         <form action="{% url 'medicos:medicos_list' %}" method="get">
-            <input type="text" name="busqueda" placeholder="Buscar...">
+            <input type="text" name="busqueda" placeholder="Buscar..." value="{{ request.GET.busqueda }}">
+            <button type="submit" class="">Buscar</button>
         </form>
     </div>
 

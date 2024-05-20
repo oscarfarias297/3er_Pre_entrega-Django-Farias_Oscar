@@ -7,9 +7,16 @@ def index(request):
     return render(request, "medicos/index.html")
 
 def medicos_list(request):
-    consulta = Medicos.objects.all()
+    busqueda = request.GET.get("busqueda", None)
+    if busqueda:
+        print(busqueda)
+        consulta = Medicos.objects.filter(nombre__icontains=busqueda) | Medicos.objects.filter(apellido__icontains = busqueda)
+    else:
+        consulta = Medicos.objects.all()
     contexto = {"medicos":consulta}
     return render(request,"medicos/medicos_list.html", contexto)
+
+
 
 def confirmar_eliminar(request, pk: int):
     consulta = Medicos.objects.get(id=pk)
