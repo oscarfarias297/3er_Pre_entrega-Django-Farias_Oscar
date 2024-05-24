@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       Swal.fire({
           title: '¿Estás seguro?',
-          text: "¡Confirma que deseas efectuar los cambios!",
+          text: "¡No podrás revertir esto!",
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
