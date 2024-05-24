@@ -18,13 +18,6 @@ def medicos_list(request):
 
 
 
-def confirmar_eliminar(request, pk: int):
-    consulta = Medicos.objects.get(id=pk)
-    if request.method == "POST":
-        consulta.delete()
-        return redirect("medicos:medicos_list")
-    return render(request, "medicos/medicos_confirm_delete.html", {"object": consulta})
-
 
 
 def medicos_modificar(request, medico_id=None):
@@ -63,9 +56,12 @@ def medicos_update(request,pk):
         form = MedicosForm(instance=consulta)
     return render(request, "medicos/medicos_form.html", {"form": form})
 
-def medicos_delete(request,pk):
-    consulta = Medicos.objects.get(id=pk)
-    if request.method == "POST":
+
+def confirmar_eliminar(request, pk: int):
+    consulta = get_object_or_404(Medicos, id=pk)
+    if request.method == "GET":
         consulta.delete()
         return redirect("medicos:medicos_list")
-    return render (request, "medicos/medicos_confirm_delete.html",{"object":consulta})
+    return render(request, "medicos/medicos_confirm_delete.html", {"object": consulta})
+
+
