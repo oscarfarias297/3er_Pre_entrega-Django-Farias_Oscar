@@ -18,8 +18,12 @@ PortalMedic - Inicio
                 <h1 class="mx-auto my-0 text-uppercase">PortalMedic</h1>
                 <h2 class="text-white-50 mx-auto mt-2 mb-5">Dirigido al personal Médico, donde podrá hacer un
                     seguimiento cercano a sus pacientes</h2>
-                <a class="btn btn-primary" href="{% url 'medicos:index' %}">SOY MÉDICO</a>
-                <a class="btn btn-primary" href="{% url 'pacientes:index' %}">SOY PACIENTE</a>
+                    {% if user.is_authenticated %}
+                        <a class="btn btn-primary" href="{% url 'medicos:index' %}">SOY MÉDICO</a>
+                        <a class="btn btn-primary" href="{% url 'pacientes:index' %}">SOY PACIENTE</a>
+                    {% else %}
+                        <a class="btn btn-primary" href="{% url 'core:login' %}">Iniciar sesion / registrarse</a>
+                    {% endif %}
             </div>
         </div>
     </div>
