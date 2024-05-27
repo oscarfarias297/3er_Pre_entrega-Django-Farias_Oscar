@@ -1,5 +1,7 @@
     Comision: "54140"
-    Alumno: "Farias Oscar"
+    Alumno: Farias Oscar
+    Profesor: Acevedo Esteban
+    Tutor: Romano Juan Manuel 
 
 
 
