@@ -8,9 +8,11 @@ PortalMedic - Lista de Pacientes
         {% for paciente in pacientes %}
         <ul>
             <li><h3>{{ paciente }}</h3></li>
-            <p>Apelldido y Nombre: {{ paciente.apellido }} {{ paciente.nombre }}</p>
+            <h3>Apelldido y Nombre: {{ paciente.apellido }} {{ paciente.nombre }}</h3>
             <br>
             <p>Historia Clínica: {{ paciente.historiaClinica }}</p>
         </ul>
     {% endfor %}
+    <button><a href="core:index">Volver a Pagina Pricipal</a></button>
+    <button><a href="medicos:medicos_list">Volver a Listado de Médicos</a></button>
 {% endblock content %}

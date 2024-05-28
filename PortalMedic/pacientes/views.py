@@ -63,7 +63,13 @@ def pacientes_delete(request,pk):
         return redirect("pacientes:pacientes_list")
     return render (request, "pacientes/pacientes_confirm_delete.html",{"object":consulta})
 
+# def pacientes_hc(request,pk):
+#     consulta = Paciente.objects.get(id=pk)
+#     contexto = {"pacientes":consulta}
+#     return render(request,"pacientes/pacientes_hc.html", contexto)
+
 def pacientes_hc(request,pk):
     consulta = Paciente.objects.get(id=pk)
     contexto = {"pacientes":consulta}
     return render(request,"pacientes/pacientes_hc.html", contexto)
+
