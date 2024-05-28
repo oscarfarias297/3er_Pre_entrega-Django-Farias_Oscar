@@ -1,0 +1,16 @@
+{% block title %}
+PortalMedic - Lista de Pacientes
+{% endblock title %}
+{% block content %}
+        <h1>Listado de pacientes PortalMedic</h1>
+        <button><a href="{% url 'core:index' %}">Volver a HOME</a></button>
+    
+        {% for paciente in pacientes %}
+        <ul>
+            <li><h3>{{ paciente }}</h3></li>
+            <p>Apelldido y Nombre: {{ paciente.apellido }} {{ paciente.nombre }}</p>
+            <br>
+            <p>Historia Clínica: {{ paciente.historiaClinica }}</p>
+        </ul>
+    {% endfor %}
+{% endblock content %}

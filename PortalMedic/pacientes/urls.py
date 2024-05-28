@@ -1,10 +1,22 @@
 from django.urls import path
 
-from pacientes.views import index, pacientes_list
+from pacientes.views import (index,
+                            pacientes_list,
+                            pacientes_create,
+                            pacientes_update,
+                            pacientes_delete,
+                            confirmar_eliminar,
+                            pacientes_hc,
+)
 
 app_name = "pacientes"
 
 urlpatterns = [
     path("", index, name="index"),
     path("pacientes/list", pacientes_list,name="pacientes_list" ),
-]
+    path("pacientes/pacientes_create/", pacientes_create, name="pacientes_create"),
+    path("pacientes/pacientes_update/<int:pk>/", pacientes_update, name="pacientes_update"),
+    path("pacientes/pacientes_delete/<int:pk>/", pacientes_delete, name="pacientes_delete"),
+    path("pacientes/pacientes_confirm_delete/<int:pk>/", confirmar_eliminar ,name="pacientes_confirm_delete"),
+    path("pacientes/pacientes_hc/<int:pk>", pacientes_hc,name="paciente_hc" ),
+]   

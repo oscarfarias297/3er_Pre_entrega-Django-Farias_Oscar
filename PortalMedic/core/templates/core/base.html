@@ -35,19 +35,22 @@
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'core:index' %}">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page"
+                        href="{% url 'core:index' %}">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about">Proyectos</a></li>
                 <li class="nav-item"><a class="nav-link" href="#projects">Sobre Nostros</a></li>
-                <li class="nav-item"><a class="nav-link" href="https://api.whatsapp.com/send/?phone=%2B5493814761261&text&type=phone_number&app_absent=0" target="_blank">Contacto</a></li>
+                <li class="nav-item"><a class="nav-link"
+                        href="https://api.whatsapp.com/send/?phone=%2B5493814761261&text&type=phone_number&app_absent=0"
+                        target="_blank">Contacto</a></li>
                 {% if user.is_authenticated %}
-                    <form action="{% url 'core:logout' %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="nav-link nav-item bg-black ">Cerrar Sesion</button>
-                    </form>
-                    <!-- <li class="nav-item"><a class="nav-link" href="{% url 'core:logout' %}">>> Cerrar Sesion</a></li> -->
-                    <li class="nav-item"><a class="nav-link" href="">|| {{user.username.upper}} ||</a></li>
+                <form action="{% url 'core:logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link nav-item bg-black ">Cerrar Sesion</button>
+                </form>
+                <!-- <li class="nav-item"><a class="nav-link" href="{% url 'core:logout' %}">>> Cerrar Sesion</a></li> -->
+                <li class="nav-item"><a class="nav-link" href="">|| {{user.username.upper}} ||</a></li>
                 {% else %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'core:login' %}">Iniciar Sesion</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'core:login' %}">Iniciar Sesion</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -58,13 +61,14 @@
 
 <body>
     {% block content %}
-    
+
     {% endblock content %}
 </body>
 
 {% block footer %}
-<footer class="footer mt-auto bg-black small text-center text-white-50">
-    <div class="container px-4 px-lg-5 font-monospace">Trabajo realizado para CODERHOUSE por OSCAR FARIAS</div>
-    <div class="container px-4 px-lg-5">Profesor: Estevan Acevedo - Tutoria: Juan Manuel Romano</div>
+<footer class="footer mt-auto bg-black big text-center text-white-50">
+    <div class="container big px-4 px-lg-5 font-monospace">Trabajo realizado por OSCAR FARIAS para <a
+            href="https://www.coderhouse.com/ar/">CODERHOUSE</a></div>
+    <div class="container px-4 px-lg-5">Profesor: <a href="https://www.linkedin.com/in/esteban-acevedo-aberastain/?originalSubdomain=ar">Esteban Acevedo</a> - Tutoria: Juan Manuel Romano</div>
 </footer>
 {% endblock footer %}
