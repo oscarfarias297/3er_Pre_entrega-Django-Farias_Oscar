@@ -15,9 +15,7 @@ def register(request: HttpRequest) -> HttpResponse:
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data["username"]
             form.save()
-            messages.success(request, f"Usuario '{username}' creado satisfactoriamente")
             return redirect('core:index') 
     else:
         form = CustomUserCreationForm()

@@ -30,6 +30,7 @@ PortalMedic > Listado
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger">Eliminar</button>
                 <a href="{% url 'medicos:medicos_update' pk=medico.id%}" class="btn btn-primary">Modificar</a>
+                <a href="{% url 'pacientes:pacientes_list'%}" class="btn btn-primary">Mis Pacientes</a>
                 </form>
             </div>
         </div>
