@@ -1,3 +1,5 @@
+from django.urls import reverse_lazy
+
 """
 Django settings for PortalMedic project.
 
@@ -124,3 +126,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = reverse_lazy("medicos:index")
+LOGIN_URL = reverse_lazy("core:login")

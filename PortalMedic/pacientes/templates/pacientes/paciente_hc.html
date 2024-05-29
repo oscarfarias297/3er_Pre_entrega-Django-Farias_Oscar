@@ -2,15 +2,18 @@
 PortalMedic - Lista de Pacientes
 {% endblock title %}
 {% block content %}
-        <h1>Listado de pacientes PortalMedic</h1>
+        <h1>Historia Clínica Paciente completa</h1>
         <button><a href="{% url 'core:index' %}">Volver a HOME</a></button>
     
         {% for paciente in pacientes %}
         <ul>
-            <li><h3>{{ paciente }}</h3></li>
+            <li></li>
             <h3>Apelldido y Nombre: {{ paciente.apellido }} {{ paciente.nombre }}</h3>
             <br>
-            <p>Historia Clínica: {{ paciente.historiaClinica }}</p>
+            <table>
+                <p>Historia Clínica: {{ paciente.historiaClinica }}</p>
+                
+            </table>
         </ul>
     {% endfor %}
     <button><a href="core:index">Volver a Pagina Pricipal</a></button>

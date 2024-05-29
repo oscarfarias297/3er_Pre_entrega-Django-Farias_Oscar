@@ -68,8 +68,7 @@ def pacientes_delete(request,pk):
 #     contexto = {"pacientes":consulta}
 #     return render(request,"pacientes/pacientes_hc.html", contexto)
 
-def pacientes_hc(request,pk):
+def pacientes_hc(request, pk):
     consulta = Paciente.objects.get(id=pk)
-    contexto = {"pacientes":consulta}
-    return render(request,"pacientes/pacientes_hc.html", contexto)
-
+    contexto = {"pacientes": [consulta]}
+    return render(request, "pacientes/paciente_hc.html", contexto)

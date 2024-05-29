@@ -10,6 +10,8 @@ def index(request):
 class CustomLoginView(LoginView):
     authentication_form = CustomAuthenticationForm
     template_name = "core/login.html"
+    next_page = "core/index.html"
+    # nextPage
 
 def register(request: HttpRequest) -> HttpResponse:
     if request.method == "POST":

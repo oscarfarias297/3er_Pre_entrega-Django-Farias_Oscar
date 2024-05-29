@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
           text: "You clicked the button!",
           icon: "success"
       }).then(() => {
-          window.location.href = "http://127.0.0.1:8000/";
+        //   window.location.href = "http://127.0.0.1:8000/";
       });
   });
 });
