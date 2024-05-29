@@ -16,7 +16,7 @@ class Paciente(models.Model):
     telefono = models.IntegerField(null=True, blank=True)
     obraSocial = models.ForeignKey(ObraSocial, on_delete=models.SET_NULL, null=True, blank=True, verbose_name = "Socio ID", related_name="paciente_obrasocial")
     numeroAfiliado = models.CharField(max_length=50,null=False, blank=False, verbose_name="Numero de Afiliado")
-    historiaClinica = models.CharField(max_length=250, null=True, blank=True)
+    historiaClinica = models.TextField(null=True, blank=True)
     medico_tratante = models.ForeignKey("medicos.Medicos", on_delete=models.SET_NULL, null=True, blank=True, related_name="paciente_medicos")
 
     def __str__(self) -> str:

@@ -2,16 +2,16 @@
 {% load static %}
 
 {% block title %}
-    PortalMedic - Crear
+    PortalMedic - Pacientes
 {% endblock title %}
 
 {% block content %}
 
 <div class="container mt-5">
     {% if form.instance.pk %}
-        <h1 class="text-center">Modificar Prestador</h1>
+        <h1 class="text-center">Modificar Paciente</h1>
     {% else %}
-        <h1 class="text-center">Editar Prestador</h1>
+        <h1 class="text-center">Editar Paciente</h1>
     {% endif %}
     <div class="row justify-content-center mt-4">
         <div class="col-md-8">
@@ -24,7 +24,7 @@
                         </table>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                            <a href="{% url 'medicos:medicos_list' %}" type="button" class="btn btn-dark ">Cancelar</button></a>
+                            <a href="{% url 'pacientes:pacientes_list' %}" type="button" class="btn btn-dark ">Cancelar</button></a>
                         </div>
                     </form>
                 </div>

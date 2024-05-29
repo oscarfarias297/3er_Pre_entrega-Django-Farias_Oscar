@@ -1,21 +1,32 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
 {% block title %}
 PortalMedic - Lista de Pacientes
 {% endblock title %}
 {% block content %}
-        <h1>Historia Clínica Paciente completa</h1>
-        <button><a href="{% url 'core:index' %}">Volver a HOME</a></button>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Historia Clínica Paciente Completa</h1>
     
-        {% for paciente in pacientes %}
-        <ul>
-            <li></li>
-            <h3>Apelldido y Nombre: {{ paciente.apellido }} {{ paciente.nombre }}</h3>
-            <br>
-            <table>
-                <p>Historia Clínica: {{ paciente.historiaClinica }}</p>
-                
-            </table>
-        </ul>
+    <div class="text-right mb-3">
+        <a href="{% url 'core:index' %}" class="btn btn-primary">Volver a HOME</a>
+    </div>
+    
+    {% for paciente in pacientes %}
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3 class="card-title">Apellido y Nombre: {{ paciente.apellido }} {{ paciente.nombre }}</h3>
+        </div>
+        <div class="card-body">
+            <p class="card-text">Historia Clínica: {{ paciente.historiaClinica }}</p>
+            <a href="{% url 'pacientes:pacientes_update' pk=paciente.id %}" class="btn btn-warning">Modificar Historia Clínica</a>
+        </div>
+    </div>
     {% endfor %}
-    <button><a href="core:index">Volver a Pagina Pricipal</a></button>
-    <button><a href="medicos:medicos_list">Volver a Listado de Médicos</a></button>
+    
+    <div class="text-right mt-4">
+        <a href="{% url 'core:index' %}" class="btn btn-secondary">Volver a Página Principal</a>
+        <a href="{% url 'pacientes:pacientes_list' %}" class="btn btn-secondary">Volver a Listado de Médicos</a>
+    </div>
+</div>
 {% endblock content %}
