@@ -19,8 +19,8 @@ PortalMedic - Inicio
                 <h2 class="text-white-50 mx-auto mt-2 mb-5">Dirigido al personal Médico, donde podrá hacer un
                     seguimiento cercano a sus pacientes</h2>
                     {% if user.is_authenticated %}
-                        <a class="btn btn-primary" href="{% url 'medicos:index' %}">SOY MÉDICO</a>
-                        <a class="btn btn-primary" href="{% url 'pacientes:index' %}">SOY PACIENTE</a>
+                        <h3><a class="btn btn-primary" href="{% url 'medicos:index' %}">ACCESO A PORTAL MÉDICO</a></h3>
+                        <!-- <a class="btn btn-primary" href="{% url 'pacientes:index' %}">SOY PACIENTE</a> -->
                     {% else %}
                         <a class="btn btn-primary" href="{% url 'core:login' %}">Iniciar sesion / registrarse</a>
                     {% endif %}
