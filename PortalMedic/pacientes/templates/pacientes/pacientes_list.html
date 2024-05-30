@@ -23,6 +23,7 @@ PortalMedic > Consultar Pacientes
             <div>
                 <h3 class="card-title">{{paciente.apellido}}, {{ paciente.nombre }}</h3>
                 <p class="card-text">DNI: {{ paciente.DNI }}</p>
+                <p class="card-text">DNI: {{ paciente.fecha_nacimiento }}</p>
                 <p class="card-text">Obra Social: {{ paciente.obraSocial }}</p>
             </div>
             <div>
@@ -30,7 +31,7 @@ PortalMedic > Consultar Pacientes
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger">Eliminar</button>
                 <a href="{% url 'pacientes:pacientes_update' pk=paciente.id%}" class="btn btn-primary">Modificar</a>
-                <a href="{% url 'pacientes:paciente_hc' pk=paciente.id %}" class="btn btn-primary">Ver Historia Clínica</a>
+                <a href="{% url 'pacientes:ver_historia' pk=paciente.id %}" class="btn btn-primary">Ver Historia Clínica</a>
                 </form>
             </div>
         </div>

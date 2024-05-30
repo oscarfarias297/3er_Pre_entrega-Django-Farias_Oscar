@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+    PortalMedic - Historia Clínica
+{% endblock title %}
+
+{% block content %}
+
+<h1>Nueva Historia Clínica</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+
+{% endblock content %}

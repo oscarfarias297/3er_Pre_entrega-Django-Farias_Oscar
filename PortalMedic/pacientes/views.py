@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
-from pacientes.models import Paciente
-from pacientes.forms import PacientesForm
+from pacientes.models import Paciente, HistoriaClinica
+from pacientes.forms import PacientesForm, HistoriaClinicaForm
 
 
 def index(request):
@@ -68,7 +68,26 @@ def pacientes_delete(request,pk):
 #     contexto = {"pacientes":consulta}
 #     return render(request,"pacientes/pacientes_hc.html", contexto)
 
-def pacientes_hc(request, pk):
-    consulta = Paciente.objects.get(id=pk)
-    contexto = {"pacientes": [consulta]}
-    return render(request, "pacientes/paciente_hc.html", contexto)
+# def pacientes_hc(request, pk):
+#     consulta = Paciente.objects.get(id=pk)
+#     contexto = {"pacientes": [consulta]}
+#     return render(request, "pacientes/paciente_hc.html", contexto)
+
+
+def guardar_historia(request, pk):
+    paciente = get_object_or_404(Paciente, id=pk)
+    if request.method == 'POST':
+        form = HistoriaClinicaForm(request.POST)
+        if form.is_valid():
+            historia = form.save(commit=False)
+            historia.paciente = paciente
+            historia.save()
+            return redirect('pacientes/ver_historia', paciente_id=paciente.id)
+    else:
+        form = HistoriaClinicaForm()
+    return render(request, 'pacientes/guardar_historia.html', {'form': form, 'paciente': paciente})
+
+def ver_historia(request, pk):
+    paciente = get_object_or_404(Paciente, id=pk)
+    historias = HistoriaClinica.objects.filter(paciente=paciente).order_by('-fecha_creacion')
+    return render(request, 'pacientes/ver_historia.html', {'paciente': paciente, 'historias': historias})

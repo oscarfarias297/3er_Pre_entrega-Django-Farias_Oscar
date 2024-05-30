@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 class ObraSocial(models.Model):
     obra_social = models.CharField(max_length=100,unique=True,null=False,blank=False)
@@ -13,10 +14,10 @@ class Paciente(models.Model):
     nombre = models.CharField(max_length=50, null = False)
     apellido = models.CharField(max_length=50, null = False)
     DNI = models.IntegerField(unique=True, null=False)
+    fecha_nacimiento = models.DateField(null=True, blank=True)
     telefono = models.IntegerField(null=True, blank=True)
     obraSocial = models.ForeignKey(ObraSocial, on_delete=models.SET_NULL, null=True, blank=True, verbose_name = "Socio ID", related_name="paciente_obrasocial")
     numeroAfiliado = models.CharField(max_length=50,null=False, blank=False, verbose_name="Numero de Afiliado")
-    historiaClinica = models.TextField(null=True, blank=True)
     medico_tratante = models.ForeignKey("medicos.Medicos", on_delete=models.SET_NULL, null=True, blank=True, related_name="paciente_medicos")
 
     def __str__(self) -> str:
@@ -25,3 +26,11 @@ class Paciente(models.Model):
     class Meta:
         verbose_name = "Paciente"
         verbose_name_plural = "Pacientes"
+
+class HistoriaClinica(models.Model):
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
+    contenido = models.TextField()
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Historia de {self.paciente.nombre} {self.paciente.apellido} - {self.fecha_creacion}'
