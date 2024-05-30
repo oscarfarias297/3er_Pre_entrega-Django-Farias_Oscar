@@ -5,3 +5,4 @@ from . import models
 
 admin.site.register(models.Paciente)
 admin.site.register(models.ObraSocial)
+admin.site.register(models.HistoriaClinica)

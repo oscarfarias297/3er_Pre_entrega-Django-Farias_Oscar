@@ -82,7 +82,7 @@ def guardar_historia(request, pk):
             historia = form.save(commit=False)
             historia.paciente = paciente
             historia.save()
-            return redirect('pacientes/ver_historia', paciente_id=paciente.id)
+            return redirect('pacientes:pacientes_list', paciente_id=paciente.id)
     else:
         form = HistoriaClinicaForm()
     return render(request, 'pacientes/guardar_historia.html', {'form': form, 'paciente': paciente})
