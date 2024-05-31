@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Video Presentacion
+{% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid mt-5">
+    <div class="row content-center">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/c-AC6gZRAm4?si=gtaeXHlnYK7f9i9-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col text-center">
+            <h3>Este video es únicamente para fines informativos y está destinado exclusivamente para la plataforma <a href="https://www.coderhouse.com/ar/" target="_blank">CODERHOUSE</a>. Queda prohibido su uso no autorizado en cualquier otra plataforma educativa o de enseñanza.</h3>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col text-center">
+            <a href="{% url 'core:index' %}" class="btn btn-primary">Volver a Página Inicial</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

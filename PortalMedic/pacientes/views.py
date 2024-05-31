@@ -72,7 +72,7 @@ def guardar_historia(request, pk):
             historia = form.save(commit=False)
             historia.paciente = paciente
             historia.save()
-            return redirect('pacientes:pacientes_list', paciente_id=paciente.id)
+            return redirect("pacientes:ver_historia", pk=paciente.id)
     else:
         form = HistoriaClinicaForm()
     return render(request, 'pacientes/guardar_historia.html', {'form': form, 'paciente': paciente})
@@ -83,12 +83,12 @@ def ver_historia(request, pk):
     return render(request, 'pacientes/ver_historia.html', {'paciente': paciente, 'historias': historias})
 
 def modificar_hc(request,pk):
-    consulta = Paciente.objects.get(id=pk)
+    historia = Paciente.objects.get(id=pk)
     if request.method == "POST":
-        form = HistoriaClinicaForm(request.POST, instance=consulta)
+        form = HistoriaClinicaForm(request.POST, instance=historia)
         if form.is_valid():
             form.save()
-            return redirect("pacientes:pacientes_list")
+            return redirect("pacientes:pacientes_list", id = pk)
     else:
-        form = HistoriaClinicaForm(instance=consulta)
+        form = HistoriaClinicaForm(instance=historia)
     return render(request, "pacientes/modificar_hc.html", {"form": form})

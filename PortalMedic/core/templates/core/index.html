@@ -20,6 +20,7 @@ PortalMedic - Inicio
                     seguimiento cercano a sus pacientes</h2>
                     {% if user.is_authenticated %}
                         <h3><a class="btn btn-primary" href="{% url 'medicos:index' %}">ACCESO A PORTAL MÉDICO</a></h3>
+                        <h3><a class="btn btn-secondary" href="{% url 'core:video_presentacion' %}">Ver video de presentación</a></h3>
                         <!-- <a class="btn btn-primary" href="{% url 'pacientes:index' %}">SOY PACIENTE</a> -->
                     {% else %}
                         <a class="btn btn-primary" href="{% url 'core:login' %}">Iniciar sesion / registrarse</a>

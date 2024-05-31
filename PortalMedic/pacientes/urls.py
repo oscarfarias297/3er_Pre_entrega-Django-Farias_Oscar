@@ -22,5 +22,5 @@ urlpatterns = [
     path("pacientes/pacientes_confirm_delete/<int:pk>/", confirmar_eliminar ,name="pacientes_confirm_delete"),
     path("pacientes/<int:pk>/guardar/", guardar_historia, name='guardar_historia'),
     path("pacientes/<int:pk>/ver/", ver_historia, name='ver_historia'),
-    path("pacientes/modificar_hc/<int:pk>", modificar_hc, name='modificar_hc'),
+    path("pacientes/<int:pk>/modificar_hc/", modificar_hc, name='modificar_hc'),
 ]

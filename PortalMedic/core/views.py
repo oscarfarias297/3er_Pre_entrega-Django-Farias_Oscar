@@ -11,7 +11,6 @@ class CustomLoginView(LoginView):
     authentication_form = CustomAuthenticationForm
     template_name = "core/login.html"
     next_page = "core/index.html"
-    # nextPage
 
 def register(request: HttpRequest) -> HttpResponse:
     if request.method == "POST":
@@ -22,3 +21,6 @@ def register(request: HttpRequest) -> HttpResponse:
     else:
         form = CustomUserCreationForm()
     return render(request, "core/register.html", {"form": form})
+
+def video_presentacion(request):
+    return render(request, "core/video_presentacion.html")
