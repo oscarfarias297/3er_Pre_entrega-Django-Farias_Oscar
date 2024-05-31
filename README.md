@@ -17,6 +17,6 @@
     El médico/usuario de la aplicación contará con un sistema ordenado para tener la información de forma rápida y sencilla, facilitando la tarea diaria sin la necesidad de tener que buscar la historia clínica de un paciente en papel.
 
 ### Mejoras Futuras:
-    Sistema de turnos web, consultas virtuales
+    A primera instancia asignar paciente para cada médico de los cuales el resto NO podrá tener accesibilidad a los mismos.
 
 
