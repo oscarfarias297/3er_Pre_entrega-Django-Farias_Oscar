@@ -6,9 +6,9 @@ from pacientes.views import (index,
                             pacientes_update,
                             pacientes_delete,
                             confirmar_eliminar,
-                            # pacientes_hc,
                             guardar_historia,
                             ver_historia,
+                            modificar_hc,
 )
 
 app_name = "pacientes"
@@ -20,7 +20,7 @@ urlpatterns = [
     path("pacientes/pacientes_update/<int:pk>/", pacientes_update, name="pacientes_update"),
     path("pacientes/pacientes_delete/<int:pk>/", pacientes_delete, name="pacientes_delete"),
     path("pacientes/pacientes_confirm_delete/<int:pk>/", confirmar_eliminar ,name="pacientes_confirm_delete"),
-    # path("pacientes/paciente_hc/<int:pk>", pacientes_hc,name="paciente_hc" ),
-    path('pacientes/<int:pk>/guardar/', guardar_historia, name='guardar_historia'),
-    path('pacientes/<int:pk>/ver/', ver_historia, name='ver_historia'),
-]   
+    path("pacientes/<int:pk>/ver/", guardar_historia, name='guardar_historia'),
+    path("pacientes/<int:pk>/ver/", ver_historia, name='ver_historia'),
+    path("pacientes/modificar_hc/<int:pk>", modificar_hc, name='modificar_hc'),
+]
