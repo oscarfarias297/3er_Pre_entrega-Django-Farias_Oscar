@@ -2,12 +2,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 from medicos.models import Medicos
 from medicos.forms import MedicosForm
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 
 
 def index(request):
     return render(request, "medicos/index.html")
 
+
+@login_required
 def medicos_list(request):
     query = request.GET.get('busqueda', '')
     if query:
@@ -20,6 +23,8 @@ def medicos_list(request):
         medicos = Medicos.objects.all()
     return render(request, 'medicos/medicos_list.html', {'medicos': medicos})
 
+
+@login_required
 def confirmar_eliminar(request, pk: int):
     consulta = Medicos.objects.get(id=pk)
     if request.method == "GET":
@@ -28,7 +33,7 @@ def confirmar_eliminar(request, pk: int):
     return render(request, "medicos/medicos_confirm_delete.html", {"object": consulta})
 
 
-
+@login_required
 def medicos_modificar(request, medico_id=None):
     if medico_id:
         medico = get_object_or_404(Medicos, pk=medico_id)
@@ -44,6 +49,7 @@ def medicos_modificar(request, medico_id=None):
         return render(request, "medicos/medicos_form.html", {"form": form})
 
 
+@login_required
 def medicos_create(request):
     if request.method == "POST":
         form = MedicosForm(request.POST)
@@ -54,6 +60,8 @@ def medicos_create(request):
         form = MedicosForm()
     return render(request, "medicos/medicos_form.html", {"form": form})
 
+
+@login_required
 def medicos_update(request,pk):
     consulta = Medicos.objects.get(id=pk)
     if request.method == "POST":
@@ -65,6 +73,8 @@ def medicos_update(request,pk):
         form = MedicosForm(instance=consulta)
     return render(request, "medicos/medicos_form.html", {"form": form})
 
+
+@login_required
 def medicos_delete(request,pk):
     consulta = Medicos.objects.get(id=pk)
     if request.method == "GET":
