@@ -6,22 +6,22 @@
 {% block content %}
 
 <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-8 offset-md-2">
-        <div class="card">
-          <div class="card-body">
-            <p class="fs-5 fst-italic">¿Confirma eliminar <span class="fs-4 fw-bold">{{object.apellido}}, {{ object.nombre }}</span>?</p>
-            <div class="d-flex justify-content-between">
-              <form method="GET" class="me-2">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-primary">Confirmar</button>
-              </form>
-              <a href="{% url 'medicos:index' %}" class="btn btn-secondary">Retornar a Página Principal</a>
-            </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <p class="fs-5 fst-italic text-center">CONFIRME QUE DESEA ELIMINAR: <span class="fs-4 fw-bold">{{object.apellido}}, {{ object.nombre }}</span>?</p>
+          <div class="d-flex justify-content-between">
+            <form method="GET" class="me-2">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-primary">Confirmar</button>
+            </form>
+            <a href="{% url 'pacientes:pacientes_list' %}" class="btn btn-secondary">Retornar</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
 {% endblock content %}
