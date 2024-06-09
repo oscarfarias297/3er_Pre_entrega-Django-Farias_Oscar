@@ -6,6 +6,7 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
 
+
 def index(request):
     return render(request, "pacientes/index.html")
 
@@ -23,6 +24,7 @@ def pacientes_list(request):
         pacientes = Paciente.objects.all()
     return render(request, 'pacientes/pacientes_list.html', {'pacientes': pacientes})
 
+
 @login_required
 def pacientes_create(request):
     if request.method == "POST":
@@ -30,9 +32,10 @@ def pacientes_create(request):
         if form.is_valid():
             form.save()
             return redirect("pacientes:pacientes_list")
-    else:
+    else:  # GET
         form = PacientesForm()
     return render(request, "pacientes/pacientes_form.html", {"form": form})
+
 
 @login_required
 def confirmar_eliminar(request, pk: int):
@@ -69,7 +72,6 @@ def pacientes_update(request,pk):
         form = PacientesForm(instance=consulta)
     return render(request, "pacientes/pacientes_form.html", {"form": form})
 
-
 @login_required
 def pacientes_delete(request,pk):
     consulta = Paciente.objects.get(id=pk)
@@ -77,7 +79,6 @@ def pacientes_delete(request,pk):
         consulta.delete()
         return redirect("pacientes:pacientes_list")
     return render (request, "pacientes/pacientes_confirm_delete.html",{"object":consulta})
-
 
 @login_required
 def guardar_historia(request, pk):

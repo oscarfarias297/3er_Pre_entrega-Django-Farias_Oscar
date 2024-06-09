@@ -28,7 +28,7 @@ class Paciente(models.Model):
         verbose_name_plural = "Pacientes"
 
 class HistoriaClinica(models.Model):
-    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
+    paciente = models.OneToOneField(Paciente, on_delete=models.CASCADE, related_name='historia_clinica')
     contenido = models.TextField()
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
