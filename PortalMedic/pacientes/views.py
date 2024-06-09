@@ -2,15 +2,29 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from pacientes.models import Paciente, HistoriaClinica
 from pacientes.forms import PacientesForm, HistoriaClinicaForm
+from django.db.models import Q
 
 
 def index(request):
     return render(request, "pacientes/index.html")
 
+# def pacientes_list(request):
+#     consulta = Paciente.objects.all()
+#     contexto = {"pacientes":consulta}
+#     return render(request,"pacientes/pacientes_list.html", contexto)
+
 def pacientes_list(request):
-    consulta = Paciente.objects.all()
-    contexto = {"pacientes":consulta}
-    return render(request,"pacientes/pacientes_list.html", contexto)
+    query = request.GET.get('busqueda', '')
+    if query:
+        pacientes = Paciente.objects.filter(
+            Q(nombre__icontains=query) |
+            Q(apellido__icontains=query) |
+            Q(DNI__icontains=query)
+        )
+    else:
+        pacientes = Paciente.objects.all()
+    return render(request, 'pacientes/pacientes_list.html', {'pacientes': pacientes})
+
 
 def pacientes_create(request):
     if request.method == "POST":
@@ -51,7 +65,7 @@ def pacientes_update(request,pk):
         if form.is_valid():
             form.save()
             return redirect("pacientes:pacientes_list")
-    else:  # GET
+    else:
         form = PacientesForm(instance=consulta)
     return render(request, "pacientes/pacientes_form.html", {"form": form})
 
@@ -84,7 +98,7 @@ def ver_historia(request, pk):
 
 def modificar_hc(request,pk):
     historia = Paciente.objects.get(id=pk)
-    if request.method == "POST":
+    if request.method == "GET":
         form = HistoriaClinicaForm(request.POST, instance=historia)
         if form.is_valid():
             form.save()

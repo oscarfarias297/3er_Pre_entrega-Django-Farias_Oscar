@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
             <h1 class="display-4 text-center mb-4">Modificar Historia Clínica {{ paciente.nombre }} {{ paciente.apellido }}</h1>
-            <form method="post" class="card p-4 shadow-sm">
+            <form method="GET" class="card p-4 shadow-sm">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <div class="d-grid">

@@ -17,6 +17,6 @@
     El médico/usuario de la aplicación contará con un sistema ordenado para tener la información de forma rápida y sencilla, facilitando la tarea diaria sin la necesidad de tener que buscar la historia clínica de un paciente en papel.
 
 ### Mejoras Futuras:
-    A primera instancia asignar paciente para cada médico de los cuales el resto NO podrá tener accesibilidad a los mismos.
+    A primera instancia asignar paciente para cada médico de los cuales el resto NO podrá tener accesibilidad a los mismos más que a los datos personales del paciente, facilitando así no tener pacientes repetidos pero si Historias Clínicas distintas para cada especialidad. -
 
 

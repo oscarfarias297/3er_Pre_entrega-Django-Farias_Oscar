@@ -1,15 +1,24 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from medicos.models import Medicos
 from medicos.forms import MedicosForm
+from django.db.models import Q
+
 
 
 def index(request):
     return render(request, "medicos/index.html")
 
 def medicos_list(request):
-    consulta = Medicos.objects.all()
-    contexto = {"medicos":consulta}
-    return render(request,"medicos/medicos_list.html", contexto)
+    query = request.GET.get('busqueda', '')
+    if query:
+        medicos = Medicos.objects.filter(
+            Q(nombre__icontains=query) |
+            Q(apellido__icontains=query) |
+            Q(DNI__icontains=query)
+        )
+    else:
+        medicos = Medicos.objects.all()
+    return render(request, 'medicos/medicos_list.html', {'medicos': medicos})
 
 def confirmar_eliminar(request, pk: int):
     consulta = Medicos.objects.get(id=pk)
