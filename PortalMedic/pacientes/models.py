@@ -1,5 +1,4 @@
 from django.db import models
-from datetime import datetime
 
 class ObraSocial(models.Model):
     obra_social = models.CharField(max_length=100,unique=True,null=False,blank=False)
