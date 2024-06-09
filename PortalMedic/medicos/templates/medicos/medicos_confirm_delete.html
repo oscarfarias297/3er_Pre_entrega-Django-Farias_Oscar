@@ -5,15 +5,23 @@
 
 {% block content %}
 
-    <p class="fs-5  fst-italic ">¿Confirma eliminar "{{ object.nombre }}"?</p>
-
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Confirmar</button>
-    </form>
-    <a href="{% url 'medicos:index' %}">Retornar a Pagina Principal</a>
-    
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{% static 'core/js/sweetAlert_confirm_delete.js' %}"></script>
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card">
+          <div class="card-body">
+            <p class="fs-10 fst-italic text-center">¿Confirma eliminar <span class="fs-4 fw-bold">{{object.apellido}}, {{ object.nombre }}</span>?</p>
+            <div class="d-flex justify-content-between">
+              <form method="GET" class="me-2">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Confirmar</button>
+              </form>
+              <a href="{% url 'medicos:index' %}" class="btn btn-secondary">Retornar a Página Principal</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endblock content %}

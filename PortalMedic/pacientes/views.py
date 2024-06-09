@@ -24,7 +24,7 @@ def pacientes_create(request):
 
 def confirmar_eliminar(request, pk: int):
     consulta = Paciente.objects.get(id=pk)
-    if request.method == "POST":
+    if request.method == "GET":
         consulta.delete()
         return redirect("pacientes:pacientes_list")
     return render(request, "pacientes/pacientes_confirm_delete.html", {"object": consulta})

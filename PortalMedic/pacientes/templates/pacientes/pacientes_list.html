@@ -7,7 +7,7 @@ PortalMedic > Consultar Pacientes
 {% block content %}
 <div class="container">
     <div class="pb-lg-3">
-        <form action="{% url 'pacientes:pacientes_list' %}" method="get">
+        <form action="{% url 'pacientes:pacientes_list' %}" method="GET">
             <input type="text" name="busqueda" placeholder="Buscar paciente">
         </form>
     </div>

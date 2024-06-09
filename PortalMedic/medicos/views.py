@@ -13,7 +13,7 @@ def medicos_list(request):
 
 def confirmar_eliminar(request, pk: int):
     consulta = Medicos.objects.get(id=pk)
-    if request.method == "POST":
+    if request.method == "GET":
         consulta.delete()
         return redirect("medicos:medicos_list")
     return render(request, "medicos/medicos_confirm_delete.html", {"object": consulta})
@@ -58,7 +58,7 @@ def medicos_update(request,pk):
 
 def medicos_delete(request,pk):
     consulta = Medicos.objects.get(id=pk)
-    if request.method == "POST":
+    if request.method == "GET":
         consulta.delete()
         return redirect("medicos:medicos_list")
     return render (request, "medicos/medicos_confirm_delete.html",{"object":consulta})
